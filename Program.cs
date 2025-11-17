@@ -9,12 +9,12 @@ class Program
         Console.WriteLine("launching an external process");
         try
         {
-            Process process = SelectAndStartProcess();
+            Process process = procceess();
             if (process != null)
             {
-                DisplayProcessInfo(process);
-                WaitForProcessCompletion(process);
-                DisplayExitInfo(process);
+                info_processsss(process);
+                waaait(process);
+                info(process);
             }
         }
         catch (Exception ex)
@@ -24,7 +24,7 @@ class Program
         Console.WriteLine("press any key to exit...");
         Console.ReadKey();
     }
-    static Process SelectAndStartProcess()
+    static Process procceess()
     {
         Console.WriteLine("\npress any key to exit...:");
         Console.WriteLine("1 - Calculator (calc.exe)");
@@ -39,30 +39,30 @@ class Program
             switch (choice)
             {
                 case "1":
-                    return StartProcess("calc.exe", "Calculator");
+                    return staaaaart("calc.exe", "Calculator");
 
                 case "2":
-                    return StartProcess("notepad.exe", "Notepad");
+                    return staaaaart("notepad.exe", "Notepad");
 
                 case "3":
-                    return StartProcess("cmd.exe", "CMD");
+                    return staaaaart("cmd.exe", "CMD");
 
                 case "4":
-                    return StartProcess("mspaint.exe", "Paint");
+                    return staaaaart("mspaint.exe", "Paint");
 
                 case "5":
-                    return StartProcess("explorer.exe", "Explorer");
+                    return staaaaart("explorer.exe", "Explorer");
 
                 default:
                     Console.WriteLine("WRONG CHOICE!!! default launching notepad");
-                    return StartProcess("notepad.exe", "Notepad");
+                    return staaaaart("notepad.exe", "Notepad");
             }
         }
         catch (Win32Exception ex)
         {
             Console.WriteLine($"error with laungching... -> {ex.Message}");
             Console.WriteLine("trying to launch notepad...");
-            return StartProcess("notepad.exe", "Notepad");
+            return staaaaart("notepad.exe", "Notepad");
         }
         catch (Exception ex)
         {
@@ -70,7 +70,7 @@ class Program
             return null;
         }
     }
-    static Process StartProcess(string fileName, string processName)
+    static Process staaaaart(string fileName, string processName)
     {
         try
         {
@@ -92,7 +92,7 @@ class Program
             throw;//Passing the exception on to SelectAndStartProcess for processing
         }
     }
-    static void DisplayProcessInfo(Process process)
+    static void info_processsss(Process process)
     {
         try
         {
@@ -112,14 +112,14 @@ class Program
             Console.WriteLine($"no to complete information about the process: {ex.Message}");
         }
     }
-    static void WaitForProcessCompletion(Process process)
+    static void waaait(Process process)
     {
         Console.WriteLine("\nwait to exit...");
         Console.WriteLine("exit for continue");
         process.WaitForExit();
         Console.WriteLine("process done!");
     }
-    static void DisplayExitInfo(Process process)
+    static void info(Process process)
     {
         Console.WriteLine("\ninfo after exit");
         Console.WriteLine($"time to exit: {DateTime.Now}");
